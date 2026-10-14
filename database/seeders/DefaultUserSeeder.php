@@ -16,25 +16,25 @@ class DefaultUserSeeder extends Seeder
     {
         // Super Admin
         $superAdmin = User::create([
-            'name' => 'Keindra',
-            'email' => 'Ken@gmail.com',
-            'password' => Hash::make('Ken')
+            'name' => 'Admin',
+            'email' => 'Admin@gmail.com',
+            'password' => Hash::make('admin')
         ]);
         $superAdmin->assignRole('Super Admin');
 
         // Petugas
         $petugas = User::create([
-            'name' => 'Linghus',
-            'email' => 'Jeet@gmail.com',
-            'password' => Hash::make('jeet')
+            'name' => 'Staff',
+            'email' => 'Staff@gmail.com',
+            'password' => Hash::make('staff')
         ]);
         $petugas->assignRole('Petugas');
 
         // Siswa
         $siswa = User::create([
-            'name' => 'Keindrasiswa',
-            'email' => 'AH@gmail.com',
-            'password' => Hash::make('siswa')
+            'name' => 'Student',
+            'email' => 'Student@gmail.com',
+            'password' => Hash::make('student')
         ]);
         $siswa->assignRole('Siswa');
     }
