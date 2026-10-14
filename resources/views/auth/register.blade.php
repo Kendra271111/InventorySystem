@@ -2,7 +2,7 @@
 
 @section('content')
 <main class="authentication-content">
-    <div class="container-fluid">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="authentication-card">
             <div class="card shadow rounded-0 overflow-hidden">
                 <div class="row g-0">
