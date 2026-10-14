@@ -11,7 +11,7 @@
     <link rel="preload" href="https://fonts.gstatic.com/s/materialicons/v145/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2" as="font" crossorigin>
     <!-- Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>{{ config('app.name', 'Metik Inventory') }}</title>
+    <title>{{ config('app.name', 'MyInventory') }}</title>
 </head>
 
 <body class="bg-base-100 text-base-content">

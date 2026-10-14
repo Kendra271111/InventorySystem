@@ -25,7 +25,7 @@
                 <table class="table table-sm">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>No</th>
                             <th>Nama Kategori</th>
                             <th class="text-center">Actions</th>
                         </tr>

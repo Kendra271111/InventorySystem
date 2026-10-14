@@ -17,7 +17,7 @@
                 <table class="table table-sm">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Kat.</th>
                             <th>Jumlah</th>

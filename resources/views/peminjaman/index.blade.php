@@ -17,7 +17,7 @@
                 <table class="table table-sm">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>No</th>
                             <th>Barang</th>
                             <th>Peminjam</th>
                             <th>Tgl Pinjam</th>

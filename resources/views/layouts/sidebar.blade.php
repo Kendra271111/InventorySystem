@@ -63,7 +63,7 @@
 
         <!-- Sidebar footer -->
         <div class="p-4 text-xs opacity-50 border-t border-base-300">
-            Metik Inventory v1.0
+            MyInventory
         </div>
     </aside>
 </div>
