@@ -17,14 +17,16 @@
                 <div class="flex items-center justify-between">
                     <div class="flex-1">
                         <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-                            0
+                            {{ $totalBarang }}
                         </h2>
                         <p class="text-sm text-gray-500 dark:text-gray-400">
                             Total Barang
                         </p>
                     </div>
                     <div class="flex-shrink-0">
-                        <i class="bi bi-box-seam text-5xl text-indigo-500 dark:text-indigo-400"></i>
+                        <span class="material-icons text-5xl text-indigo-500 dark:text-indigo-400">
+                            inventory_2
+                        </span>
                     </div>
                 </div>
             </div>
@@ -32,14 +34,16 @@
                 <div class="flex items-center justify-between">
                     <div class="flex-1">
                         <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-                            0
+                            {{ $totalKategori }}
                         </h2>
                         <p class="text-sm text-gray-500 dark:text-gray-400">
                             Total Kategori
                         </p>
                     </div>
                     <div class="flex-shrink-0">
-                        <i class="bi bi-bookmarks text-5xl text-emerald-500 dark:text-emerald-400"></i>
+                        <span class="material-icons text-5xl text-emerald-500 dark:text-emerald-400">
+                            category
+                        </span>
                     </div>
                 </div>
             </div>
@@ -47,14 +51,16 @@
                 <div class="flex items-center justify-between">
                     <div class="flex-1">
                         <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-                            0
+                            {{ $totalPeminjaman }}
                         </h2>
                         <p class="text-sm text-gray-500 dark:text-gray-400">
                             Total Peminjaman
                         </p>
                     </div>
                     <div class="flex-shrink-0">
-                        <i class="bi bi-clipboard2-check text-5xl text-purple-500 dark:text-purple-400"></i>
+                        <span class="material-icons text-5xl text-purple-500 dark:text-purple-400">
+                            assignment
+                        </span>
                     </div>
                 </div>
             </div>
@@ -62,14 +68,16 @@
                 <div class="flex items-center justify-between">
                     <div class="flex-1">
                         <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-                            0
+                            {{ $totalUser }}
                         </h2>
                         <p class="text-sm text-gray-500 dark:text-gray-400">
                             Total User
                         </p>
                     </div>
                     <div class="flex-shrink-0">
-                        <i class="bi bi-people text-5xl text-teal-500 dark:text-teal-400"></i>
+                        <span class="material-icons text-5xl text-teal-500 dark:text-teal-400">
+                            people
+                        </span>
                     </div>
                 </div>
             </div>

@@ -9,9 +9,12 @@ import '../../public/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css'
 import SimpleBar from 'simplebar';
 import PerfectScrollbar from 'perfect-scrollbar';
 
-// Initialize SimpleBar
+// Initialize SimpleBar if sidebar-wrapper exists
 document.addEventListener('DOMContentLoaded', () => {
-    new SimpleBar(document.querySelector('.sidebar-wrapper'));
+    const sidebar = document.querySelector('.sidebar-wrapper');
+    if (sidebar) {
+        new SimpleBar(sidebar);
+    }
 });
 
 // Initialize PerfectScrollbar for .best-barang if exists

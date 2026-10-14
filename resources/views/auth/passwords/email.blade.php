@@ -1,42 +1,40 @@
 @extends('layouts.auth')
+@section('title', 'Forgot Password')
 
 @section('content')
-<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-center">
-        <div class="w-11/12 md:w-2/3 lg:w-1/2">
-            <div class="card shadow-xl rounded-lg">
-                <div class="card-header p-4">{{ __('Reset Password') }}</div>
-
-                <div class="card-body p-4">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="space-y-4">
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">{{ __('Email Address') }}</label>
-                                <input id="email" type="email" class="input input-bordered w-full"
-                                       name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                @error('email')
-                                    <p class="text-red-500 text-xs mt-1"><strong>{{ $message }}</strong></p>
-                                @enderror
-                            </div>
-
-                            <div class="w-full">
-                                <button type="submit" class="btn btn-primary w-full">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+        <div class="flex flex-col items-center gap-3 mb-6">
+            <img src="{{ asset('assets/images/logo-icon.png') }}" class="w-14 h-14 object-contain" alt="Logo">
+            <h1 class="text-2xl font-bold">Forgot Password</h1>
+            <p class="text-sm opacity-60 text-center">Enter your email and we'll send you a reset link</p>
         </div>
+
+        <form method="POST" action="{{ route('password.email') }}" class="space-y-5">
+            @csrf
+            <div class="form-control">
+                <label class="label" for="email">
+                    <span class="label-text">Email Address</span>
+                </label>
+                <label class="input input-bordered flex items-center gap-2">
+                    <span class="material-icons text-base-content/50 text-lg">email</span>
+                    <input type="email" id="email" name="email" class="grow"
+                           placeholder="you@example.com"
+                           value="{{ old('email') }}" required autocomplete="email" />
+                </label>
+                @error('email')
+                    <label class="label"><span class="label-text-alt text-error">{{ $message }}</span></label>
+                @enderror
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full">
+                Send Reset Link
+            </button>
+        </form>
+
+        <p class="text-center text-sm mt-4">
+            <a href="{{ route('login') }}" class="link link-primary">Back to Login</a>
+        </p>
     </div>
 </div>
 @endsection

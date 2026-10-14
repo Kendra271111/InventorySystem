@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
+use App\Models\Kategori;
+use App\Models\Peminjaman;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $totalBarang = Barang::count();
+        $totalKategori = Kategori::count();
+        $totalPeminjaman = Peminjaman::count();
+        $totalUser = User::count();
+
+        return view('dashboard', compact('totalBarang', 'totalKategori', 'totalPeminjaman', 'totalUser'));
     }
 }

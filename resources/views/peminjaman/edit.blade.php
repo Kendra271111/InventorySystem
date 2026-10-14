@@ -1,63 +1,77 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card">
-    <div class="card-body">
+<div class="container mx-auto px-4 py-6">
+    <div class="card w-full">
+        <div class="card-body">
+            <h2 class="card-title mb-4">Edit Peminjaman</h2>
+            <form action="{{ route('peminjaman.update', $peminjaman->id) }}" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                @csrf
+                @method('PUT')
 
-        <h5 class="mb-3">Edit Peminjaman</h5>
-
-        <form action="{{ route('peminjaman.update', $peminjaman->id) }}" method="POST">
-            @csrf
-            @method('PUT')
-
-            <div class="row g-3">
-
-                <div class="col-md-4">
-                    <label class="form-label">Barang</label>
-                    <select name="barang_id" class="form-control" required>
+                <!-- BARANG -->
+                <div>
+                    <label for="barang_id" class="label text-font-weight-medium block mb-1">Barang</label>
+                    <select name="barang_id" id="barang_id" class="select select-bordered w-full max-w-xs" required>
                         @foreach ($barang as $b)
-                            <option value="{{ $b->id }}" {{ $peminjaman->barang_id == $b->id ? 'selected' : '' }}>
+                            <option value="{{ $b->id }}" {{ old('barang_id', $peminjaman->barang_id) == $b->id ? 'selected' : '' }}>
                                 {{ $b->nama }}
                             </option>
                         @endforeach
                     </select>
+                    @error('barang_id')
+                        <p class="label-text-alt text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
-                <div class="col-md-4">
-                    <label class="form-label">User</label>
-                    <select name="user_id" class="form-control" required>
+                <!-- USER -->
+                <div>
+                    <label for="user_id" class="label text-font-weight-medium block mb-1">User</label>
+                    <select name="user_id" id="user_id" class="select select-bordered w-full max-w-xs" required>
                         @foreach ($user as $u)
-                            <option value="{{ $u->id }}" {{ $peminjaman->user_id == $u->id ? 'selected' : '' }}>
+                            <option value="{{ $u->id }}" {{ old('user_id', $peminjaman->user_id) == $u->id ? 'selected' : '' }}>
                                 {{ $u->name }}
                             </option>
                         @endforeach
                     </select>
+                    @error('user_id')
+                        <p class="label-text-alt text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
-                <div class="col-md-4">
-                    <label class="form-label">Status</label>
-                    <input type="text" name="status" class="form-control" value="{{ $peminjaman->status }}" required>
+                <!-- STATUS -->
+                <div>
+                    <label for="status" class="label text-font-weight-medium block mb-1">Status</label>
+                    <input type="text" name="status" id="status" class="input input-bordered w-full max-w-xs" value="{{ old('status', $peminjaman->status) }}" required>
+                    @error('status')
+                        <p class="label-text-alt text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
-                <div class="col-md-6">
-                    <label class="form-label">Tanggal Pinjam</label>
-                    <input type="date" name="tanggal_pinjam" class="form-control" value="{{ $peminjaman->tanggal_pinjam }}" required>
+                <!-- TANGGAL PINJAM -->
+                <div>
+                    <label for="tanggal_pinjam" class="label text-font-weight-medium block mb-1">Tanggal Pinjam</label>
+                    <input type="date" name="tanggal_pinjam" id="tanggal_pinjam" class="input input-bordered w-full max-w-xs" value="{{ old('tanggal_pinjam', $peminjaman->tanggal_pinjam) }}" required>
+                    @error('tanggal_pinjam')
+                        <p class="label-text-alt text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
-                <div class="col-md-6">
-                    <label class="form-label">Tanggal Kembali</label>
-                    <input type="date" name="tanggal_kembali" class="form-control" value="{{ $peminjaman->tanggal_kembali }}" required>
+                <!-- TANGGAL KEMBALI -->
+                <div>
+                    <label for="tanggal_kembali" class="label text-font-weight-medium block mb-1">Tanggal Kembali</label>
+                    <input type="date" name="tanggal_kembali" id="tanggal_kembali" class="input input-bordered w-full max-w-xs" value="{{ old('tanggal_kembali', $peminjaman->tanggal_kembali) }}" required>
+                    @error('tanggal_kembali')
+                        <p class="label-text-alt text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
-            </div>
-
-            <div class="mt-3">
-                <button class="btn btn-primary">Update</button>
-                <a href="{{ route('peminjaman.index') }}" class="btn btn-secondary">Batal</a>
-            </div>
-
-        </form>
-
+                <div class="col-span-2 flex justify-end">
+                    <a href="{{ route('peminjaman.index') }}" class="btn btn-secondary mr-2">Batal</a>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 @endsection

@@ -21,8 +21,9 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return Auth::check() ? redirect()->route('home') : redirect()->route('login');
 });
+
 Route::get('/login', function () {
     return view('login');
 });

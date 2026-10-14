@@ -1,26 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card">
-    <div class="card-body">
-        <h5 class="mb-3">Detail User</h5>
-
-        <table class="table">
-            <tr>
-                <th>Nama</th>
-                <td>{{ $user->name }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ $user->email }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ implode(', ', $user->getRoleNames()->toArray()) }}</td>
-            </tr>
-        </table>
-
-        <a href="{{ route('user.index') }}" class="btn btn-secondary">Kembali</a>
+<div class="container mx-auto px-4 py-6">
+    <div class="card w-full">
+        <div class="card-body">
+            <h2 class="card-title">Detail User</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Nama -->
+                <div class="flex items-center">
+                    <span class="label text-font-weight-medium">Nama:</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="label-text">{{ $user->name }}</span>
+                </div>
+                <!-- Email -->
+                <div class="flex items-center">
+                    <span class="label text-font-weight-medium">Email:</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="label-text">{{ $user->email }}</span>
+                </div>
+                <!-- Roles -->
+                <div class="flex items-center">
+                    <span class="label text-font-weight-medium">Roles:</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="label-text">{{ implode(', ', $user->getRoleNames()->toArray()) }}</span>
+                </div>
+            </div>
+            <div class="flex justify-end space-x-3 mt-6">
+                <a href="{{ route('user.index') }}" class="btn btn-secondary">Kembali</a>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
