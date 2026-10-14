@@ -4,135 +4,102 @@
 <main class="authentication-content">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="authentication-card">
-            <div class="card shadow rounded-0 overflow-hidden">
-                <div class="row g-0">
+            <div class="card shadow-xl rounded-lg">
+<div class="flex flex-row">
 
-                    {{-- Bagian kiri (gambar) --}}
-                    <div class="col-lg-6 bg-login d-flex align-items-center justify-content-center">
-                        <img src="{{ asset('assets/images/error/login-img.jpg') }}" class="img-fluid" alt="register">
-                    </div>
+                        {{-- Bagian kiri (gambar) --}}
+                        <div class="w-1/2 lg:w-1/2 bg-login flex items-center justify-center">
+                            <img src="{{ asset('assets/images/error/login-img.jpg') }}" class="w-full h-auto" alt="register">
+                        </div>
 
-                    {{-- Bagian kanan (form register) --}}
-                    <div class="col-lg-6">
-                        <div class="card-body p-4 p-sm-5">
-                            <h5 class="card-title text-center mb-4">Register Akun</h5>
+                        {{-- Bagian kanan (form register) --}}
+                        <div class="w-1/2 lg:w-1/2">
+                            <div class="card-body p-4 p-sm-5">
+                                <h5 class="text-2xl font-bold text-center mb-4">Register Akun</h5>
 
-                            <form class="form-body" method="POST" action="{{ route('register') }}">
-                                @csrf
+                                <form class="form-body" method="POST" action="{{ route('register') }}">
+                                    @csrf
 
-                                <div class="row g-3">
+                                    <div class="space-y-4">
 
-                                    {{-- Nama --}}
-                                    <div class="col-12">
-                                        <label for="name" class="form-label">Nama Lengkap</label>
-                                        <div class="ms-auto position-relative">
-                                            <div class="position-absolute top-50 translate-middle-y search-icon px-3">
-                                                <i class="bi bi-person-fill"></i>
+                                        {{-- Nama --}}
+                                        <div>
+                                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                                            <div class="flex items-center space-x-2">
+                                                <i class="bi bi-person-fill text-gray-500"></i>
+                                                <input type="text" id="name" name="name"
+                                                     value="{{ old('name') }}" required autofocus
+                                                     class="input input-bordered w-full"
+                                                     placeholder="Masukkan nama">
                                             </div>
-
-                                            <input
-                                                type="text"
-                                                id="name"
-                                                name="name"
-                                                value="{{ old('name') }}"
-                                                required
-                                                autofocus
-                                                class="form-control radius-30 ps-5 @error('name') is-invalid @enderror"
-                                                placeholder="Masukkan nama">
-
                                             @error('name')
-                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                             @enderror
                                         </div>
-                                    </div>
 
-                                    {{-- Email --}}
-                                    <div class="col-12">
-                                        <label for="email" class="form-label">Email Address</label>
-                                        <div class="ms-auto position-relative">
-                                            <div class="position-absolute top-50 translate-middle-y search-icon px-3">
-                                                <i class="bi bi-envelope-fill"></i>
+                                        {{-- Email --}}
+                                        <div>
+                                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                            <div class="flex items-center space-x-2">
+                                                <i class="bi bi-envelope-fill text-gray-500"></i>
+                                                <input type="email" id="email" name="email"
+                                                     value="{{ old('email') }}" required
+                                                     class="input input-bordered w-full"
+                                                     placeholder="Masukkan email">
                                             </div>
-
-                                            <input
-                                                type="email"
-                                                id="email"
-                                                name="email"
-                                                value="{{ old('email') }}"
-                                                required
-                                                class="form-control radius-30 ps-5 @error('email') is-invalid @enderror"
-                                                placeholder="Masukkan email">
-
                                             @error('email')
-                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                             @enderror
                                         </div>
-                                    </div>
 
-                                    {{-- Password --}}
-                                    <div class="col-12">
-                                        <label for="password" class="form-label">Password</label>
-                                        <div class="ms-auto position-relative">
-                                            <div class="position-absolute top-50 translate-middle-y search-icon px-3">
-                                                <i class="bi bi-lock-fill"></i>
+                                        {{-- Password --}}
+                                        <div>
+                                            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                                            <div class="flex items-center space-x-2">
+                                                <i class="bi bi-lock-fill text-gray-500"></i>
+                                                <input type="password" id="password" name="password" required
+                                                     class="input input-bordered w-full"
+                                                     placeholder="Masukkan password">
                                             </div>
-
-                                            <input
-                                                type="password"
-                                                id="password"
-                                                name="password"
-                                                required
-                                                class="form-control radius-30 ps-5 @error('password') is-invalid @enderror"
-                                                placeholder="Masukkan password">
-
                                             @error('password')
-                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                             @enderror
                                         </div>
-                                    </div>
 
-                                    {{-- Konfirmasi Password --}}
-                                    <div class="col-12">
-                                        <label for="password-confirm" class="form-label">Konfirmasi Password</label>
-                                        <div class="ms-auto position-relative">
-                                            <div class="position-absolute top-50 translate-middle-y search-icon px-3">
-                                                <i class="bi bi-lock-fill"></i>
+                                        {{-- Konfirmasi Password --}}
+                                        <div>
+                                            <label for="password-confirm" class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Password</label>
+                                            <div class="flex items-center space-x-2">
+                                                <i class="bi bi-lock-fill text-gray-500"></i>
+                                                <input type="password" id="password-confirm" name="password_confirmation"
+                                                     required
+                                                     class="input input-bordered w-full"
+                                                     placeholder="Ulangi password">
                                             </div>
-
-                                            <input
-                                                type="password"
-                                                id="password-confirm"
-                                                name="password_confirmation"
-                                                required
-                                                class="form-control radius-30 ps-5"
-                                                placeholder="Ulangi password">
                                         </div>
-                                    </div>
 
-                                    {{-- Tombol Daftar --}}
-                                    <div class="col-12">
-                                        <div class="d-grid">
-                                            <button type="submit" class="btn btn-primary radius-30">
+                                        {{-- Tombol Daftar --}}
+                                        <div class="w-full">
+                                            <button type="submit" class="btn btn-primary w-full">
                                                 Register
                                             </button>
                                         </div>
-                                    </div>
 
-                                    {{-- Punya akun --}}
-                                    <div class="col-12">
-                                        <p class="mb-0">
-                                            Sudah punya akun?
-                                            <a href="{{ route('login') }}">Login</a>
-                                        </p>
-                                    </div>
+                                        {{-- Punya akun --}}
+                                        <div class="w-full">
+                                            <p class="mb-0">
+                                                Sudah punya akun?
+                                                <a href="{{ route('login') }}">Login</a>
+                                            </p>
+                                        </div>
 
-                                </div> {{-- row g-3 --}}
-                            </form>
+                                    </div> {{-- space-y-4 --}}
+                                </form>
 
+                            </div>
                         </div>
-                    </div>
 
-                </div> {{-- row --}}
+                    </div> {{-- flex flex-row --}}
             </div>
         </div>
     </div>

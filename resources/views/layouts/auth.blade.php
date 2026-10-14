@@ -1,72 +1,78 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png" />
-    <!--plugins-->
-    <link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
-    <!-- Bootstrap CSS -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-    <!-- loader-->
-    <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
-
-    <!--Theme Styles-->
-    <link href="{{ asset('assets/css/dark-theme.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/light-theme.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/semi-dark.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/header-colors.css') }}" rel="stylesheet" />
+    <!-- Vite Assets -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Bootstrap Icons (temporary) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
-
-<body class="d-flex flex-column min-vh-100">
-
-
-
-
-    @yield('content')
-
+<body class="flex min-h-screen items-center justify-center bg-gray-50">
+    <div class="w-full max-w-md">
+        @yield('content')
+    </div>
 
     <!--Start Back To Top Button-->
-    <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+    <a href="javaScript:;" class="back-to-top fixed bottom-4 right-4 z-50 hidden"><i class='bx bxs-up-arrow-alt'></i></a>
     <!--End Back To Top Button-->
-    </div>
-    <!--end wrapper-->
 
+    <!-- Vite JS -->
+    @vite(['resources/js/app.js'])
 
-    <!-- Bootstrap bundle JS -->
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <!--plugins-->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
-    <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <script src="{{ asset('assets/js/pace.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/chartjs/js/Chart.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/chartjs/js/Chart.extension.js') }}"></script>
-    <script src="{{ asset('assets/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
-    <!--app-->
-    <script src="{{ asset('assets/js/app.js') }}"></script>
-    <script src="{{ asset('assets/js/index.js') }}"></script>
+    <!-- Dark Mode and Dropdown Script -->
     <script>
-        new PerfectScrollbar(".best-barang")
+        // Dark mode functionality
+        const htmlElement = document.documentElement;
+        const darkModeToggle = document.querySelector('.dark-mode-icon');
+
+        // Function to set theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                htmlElement.setAttribute('data-theme', 'dark');
+                // Update icon to sun (for light mode toggle)
+                if (darkModeToggle) {
+                    darkModeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+                }
+            } else {
+                htmlElement.removeAttribute('data-theme');
+                // Update icon to moon
+                if (darkModeToggle) {
+                    darkModeToggle.innerHTML = '<i class="bi bi-moon-fill"></i>';
+                }
+            }
+            // Save to localStorage
+            localStorage.setItem('theme', theme);
+        }
+
+        // Function to toggle theme
+        function toggleTheme() {
+            const currentTheme = htmlElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        }
+
+        // Event listener for toggle
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('click', toggleTheme);
+        }
+
+        // On load, check for saved theme or system preference
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else {
+                // Check system preference
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                setTheme(prefersDark ? 'dark' : 'light');
+            }
+        });
     </script>
-
-
 </body>
-
 </html>

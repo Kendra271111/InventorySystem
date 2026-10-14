@@ -6,16 +6,18 @@
         "dev": "vite"
     },
     "devDependencies": {
-
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
-
         "concurrently": "^9.0.1",
+        "daisyui": "^5.7.50",
         "laravel-vite-plugin": "^1.2.0",
         "postcss": "^8.4.47",
-
         "tailwindcss": "^3.4.13",
-        "vite": "^6.0.11",
-        "daisyui": "^4.12.10"
+        "vite": "^6.0.11"
+    },
+    "dependencies": {
+        "metismenu": "^3.1.0",
+        "perfect-scrollbar": "^1.5.6",
+        "simplebar": "^6.3.3"
     }
 }

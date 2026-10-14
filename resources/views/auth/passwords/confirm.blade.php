@@ -1,34 +1,29 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
+    <div class="flex justify-center">
+        <div class="w-11/12 md:w-2/3 lg:w-1/2">
+            <div class="card shadow-xl rounded-lg">
+                <div class="card-header p-4">{{ __('Confirm Password') }}</div>
 
-                <div class="card-body">
+                <div class="card-body p-4">
                     {{ __('Please confirm your password before continuing.') }}
 
                     <form method="POST" action="{{ route('password.confirm') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                        <div class="space-y-4">
+                            <div>
+                                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">{{ __('Password') }}</label>
+                                <input id="password" type="password" class="input input-bordered w-full"
+                                       name="password" required autocomplete="current-password">
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                    <p class="text-red-500 text-xs mt-1"><strong>{{ $message }}</strong></p>
                                 @enderror
                             </div>
-                        </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="flex items-center space-x-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Confirm Password') }}
                                 </button>

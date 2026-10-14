@@ -4,98 +4,86 @@
     <main class="authentication-content">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="authentication-card">
-                <div class="card shadow rounded-0 overflow-hidden">
-                    <div class="row g-0">
+                <div class="card shadow-xl rounded-lg">
+<div class="flex flex-row">
 
                         {{-- Bagian kiri (gambar) --}}
-                        <div class="col-lg-6 bg-login d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('assets/images/error/login-img.jpg') }}" class="img-fluid" alt="login">
+                        <div class="w-1/2 lg:w-1/2 bg-login flex items-center justify-center">
+                            <img src="{{ asset('assets/images/error/login-img.jpg') }}" class="w-full h-auto" alt="login">
                         </div>
 
                         {{-- Bagian kanan (form login) --}}
-                        <div class="col-lg-6">
+                        <div class="w-1/2 lg:w-1/2">
                             <div class="card-body p-4 p-sm-5">
-                                <h5 class="card-title text-center mb-4">Login</h5>
+                                <h5 class="text-2xl font-bold text-center mb-4">Login</h5>
 
                                 <form class="form-body" method="POST" action="{{ route('login') }}">
                                     @csrf
 
-                                    <div class="row g-3">
+                                    <div class="space-y-4">
 
                                         {{-- Email --}}
-                                        <div class="col-12">
-                                            <label for="email" class="form-label">Email Address</label>
-
-                                            <div class="ms-auto position-relative">
-                                                <div class="position-absolute top-50 translate-middle-y search-icon px-3">
-                                                    <i class="bi bi-envelope-fill"></i>
-                                                </div>
-
+                                        <div>
+                                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                            <div class="flex items-center space-x-2">
+                                                <i class="bi bi-envelope-fill text-gray-500"></i>
                                                 <input type="email" id="email" name="email"
-                                                    value="{{ old('email') }}" required autofocus
-                                                    class="form-control radius-30 ps-5 @error('email') is-invalid @enderror"
-                                                    placeholder="Email Address">
-
-                                                @error('email')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
+                                                     value="{{ old('email') }}" required autofocus
+                                                     class="input input-bordered w-full"
+                                                     placeholder="Email Address">
                                             </div>
+                                            @error('email')
+                                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                            @enderror
                                         </div>
 
                                         {{-- Password --}}
-                                        <div class="col-12">
-                                            <label for="password" class="form-label">Password</label>
-
-                                            <div class="ms-auto position-relative">
-                                                <div class="position-absolute top-50 translate-middle-y search-icon px-3">
-                                                    <i class="bi bi-lock-fill"></i>
-                                                </div>
-
+                                        <div>
+                                            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                                            <div class="flex items-center space-x-2">
+                                                <i class="bi bi-lock-fill text-gray-500"></i>
                                                 <input type="password" id="password" name="password" required
-                                                    class="form-control radius-30 ps-5 @error('password') is-invalid @enderror"
-                                                    placeholder="Enter Password">
-
-                                                @error('password')
-                                                    <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
+                                                     class="input input-bordered w-full"
+                                                     placeholder="Enter Password">
                                             </div>
+                                            @error('password')
+                                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                            @enderror
                                         </div>
 
                                         {{-- Remember Me --}}
-                                        <div class="col-6">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" name="remember"
-                                                    id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                <label class="form-check-label" for="remember">
-                                                    Remember Me
-                                                </label>
+                                        <div class="flex items-center space-x-3">
+                                            <div class="flex items-center h-5">
+                                                <input class="checkbox checkbox-primary" type="checkbox" name="remember"
+                                                     id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                            </div>
+                                            <div>
+                                                <label for="remember" class="cursor-select">Remember Me</label>
                                             </div>
                                         </div>
 
                                         {{-- Tombol Login --}}
-                                        <div class="col-12">
-                                            <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary radius-30">
-                                                    Login
-                                                </button>
-                                            </div>
-                                        </div>
+<div class="w-full">
+            <button type="submit" class="btn btn-primary w-full">
+                Login
+            </button>
+        </div>
 
                                         {{-- Link Register (Opsional) --}}
-                                        <div class="col-12">
-                                            <p class="mb-0">
-                                                Tidak memiliki akun?
-                                                <a href="{{ route('register') }}">Registrasi</a>
-                                            </p>
-                                        </div>
+<div class="w-full">
+            <p class="mb-0">
+                Tidak memiliki akun?
+                <a href="{{ route('register') }}">Registrasi</a>
+            </p>
+        </div>
 
-                                    </div> {{-- row g-3 --}}
+                                    </div> {{-- space-y-4 --}}
                                 </form>
 
                             </div>
                         </div>
 
-                    </div> {{-- row --}}
+                    </div> {{-- flex flex-row --}}
                 </div>
             </div>
         </div>
