@@ -221,9 +221,9 @@ After running `php artisan migrate --seed`, you can log in using these pre-confi
 
 | Role | Email | Password | Access Level |
 |---|---|---|---|
-| **Super Admin** | `Ken@gmail.com` | `Ken` | Full System Access & Role Administration |
-| **Petugas** | `Jeet@gmail.com` | `jeet` | Inventory & Loan Operations Access |
-| **Siswa** | `AH@gmail.com` | `siswa` | Read-only Catalog & Loan History |
+| **Super Admin** | `Admin@gmail.com` | `admin` | Full System Access & Role Administration |
+| **Petugas** | `Staff@gmail.com` | `staff` | Inventory & Loan Operations Access |
+| **Siswa** | `Student@gmail.com` | `student` | Read-only Catalog & Loan History |
 
 > [!NOTE]  
 > Make sure to update these default credentials when deploying to a production or public environment!
